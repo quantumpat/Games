@@ -27,6 +27,8 @@ namespace GameEngine.GameObjects
 
 			this.engine = engine;
 
+			sprites = new ArrayList();
+
 		}
 
 		
@@ -43,8 +45,7 @@ namespace GameEngine.GameObjects
 		public void Draw(SpriteBatch batch)
 		{
 
-			foreach (Sprite sprite in sprites)
-				sprite.Draw(batch);
+			foreach (Sprite sprite in sprites) if (sprite != null) sprite.Draw(batch);
 
 		}
 

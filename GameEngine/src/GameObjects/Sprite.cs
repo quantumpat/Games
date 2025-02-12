@@ -80,7 +80,7 @@ namespace GameEngine.GameObjects
 		public void Draw(SpriteBatch batch)
 		{
 
-			if (!visible) return;
+			if (!visible || texture == null) return;
 
 			batch.Draw(texture, pos, Color.White);
 

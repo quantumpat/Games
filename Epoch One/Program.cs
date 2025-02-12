@@ -1,5 +1,6 @@
 ﻿
 using GameEngine.GameObjects;
+using System;
 
 public class Program
 {
@@ -10,7 +11,7 @@ public class Program
 		engine.Config.AutoApplyChanges = true;
 		engine.Run();
 
-		Sprite sprite = new Sprite(engine.GameObjects, "cosmos-bg", 0, 0);
+		Sprite sprite = new Sprite(engine.GameObjects, "cosmos-bg", 0, 0, "ui-bg-cosmos");
 
 	}
 }
