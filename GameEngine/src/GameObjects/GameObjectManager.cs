@@ -1,4 +1,5 @@
 ﻿using GameEngine.Core;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace GameEngine.GameObjects
 		 * Variables
 		 */
 		private Engine engine;
-		//private ArrayList<Sprite> sprites;
+		private ArrayList sprites;
 
 
 		/*
@@ -28,6 +29,24 @@ namespace GameEngine.GameObjects
 
 		}
 
+		
+		/*
+		 * Methods
+		 */
+		public void Add(Sprite sprite)
+		{
+
+			sprites.Add(sprite);
+
+		}
+
+		public void Draw(SpriteBatch batch)
+		{
+
+			foreach (Sprite sprite in sprites)
+				sprite.Draw(batch);
+
+		}
 
 		/*
 		 * Getters & Setters

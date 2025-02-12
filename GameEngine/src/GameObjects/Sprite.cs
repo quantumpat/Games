@@ -1,4 +1,5 @@
 ﻿using GameEngine.Core;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace GameEngine.GameObjects
 		private GameObjectManager manager = null;
 		private String name = null;
 
-		private int x = 0, y = 0;
+		private Vector2 pos;
 
 		private String textureName = null;
 		private Texture2D texture = null;
@@ -35,6 +36,8 @@ namespace GameEngine.GameObjects
 
 			this.name = name;
 
+			pos = new Vector2(0, 0);
+
 		}
 
 		public Sprite(GameObjectManager manager, String name, int x, int y)
@@ -44,8 +47,7 @@ namespace GameEngine.GameObjects
 
 			this.name = name;
 
-			this.x = x;
-			this.y = y;
+			pos = new Vector2(x, y);
 
 		}
 
@@ -56,11 +58,31 @@ namespace GameEngine.GameObjects
 
 			this.name = name;
 
-			this.x = x;
-			this.y = y;
+			pos = new Vector2(x, y);
 
 			this.textureName = textureName;
-			this.texture = manager.Engine.Content.Load<Texture2D>(textureName);
+			texture = manager.Engine.Content.Load<Texture2D>(textureName);
+
+		}
+
+
+		/*
+		 * Methods
+		 */
+		private void Initialize()
+		{
+
+			manager.Add(this);
+
+		}
+
+		
+		public void Draw(SpriteBatch batch)
+		{
+
+			if (!visible) return;
+
+			batch.Draw(texture, pos, Color.White);
 
 		}
 

@@ -87,6 +87,10 @@ namespace GameEngine.Core
 
 			GraphicsDevice.Clear(Color.Black);
 
+			spriteBatch.Begin();
+			gameObjects.Draw(spriteBatch);
+			spriteBatch.End();
+
 			base.Draw(gameTime);
 
 		}
