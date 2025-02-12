@@ -5,6 +5,8 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameEngine", "GameEngine\GameEngine.csproj", "{77A34E83-2D11-4BFD-9388-ECDD24DFFFFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epoch One", "Epoch One\Epoch One.csproj", "{FDE799B9-49D3-4EBB-9649-38A629A3228A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{77A34E83-2D11-4BFD-9388-ECDD24DFFFFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77A34E83-2D11-4BFD-9388-ECDD24DFFFFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77A34E83-2D11-4BFD-9388-ECDD24DFFFFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDE799B9-49D3-4EBB-9649-38A629A3228A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDE799B9-49D3-4EBB-9649-38A629A3228A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDE799B9-49D3-4EBB-9649-38A629A3228A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDE799B9-49D3-4EBB-9649-38A629A3228A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
