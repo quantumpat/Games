@@ -54,6 +54,8 @@ namespace GameEngine.Core
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 
+			gameObjects = new GameObjectManager(this);
+
 			config.ApplyChanges();
 
 		}

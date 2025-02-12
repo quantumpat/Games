@@ -97,9 +97,9 @@ namespace GameEngine.GameObjects
 			set { name = value; }
 		}
 
-		public int X { get { return x; } set { x = value; } }
+		public float X { get { return pos.X; } set { pos.X = value; } }
 
-		public int Y { get { return y; } set { y = value; } }
+		public float Y { get { return pos.Y; } set { pos.Y = value; } }
 
 		public Texture2D GetTexture() { return texture; }
 
