@@ -15,7 +15,7 @@ namespace GameEngine.GameObjects
 		 * Variables
 		 */
 		private Engine engine;
-		private ArrayList<Sprite> sprites;
+		//private ArrayList<Sprite> sprites;
 
 
 		/*
