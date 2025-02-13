@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace GameEngine.GameObjects
 
 			this.engine = engine;
 
-			sprites = new ArrayList();
+			sprites = new ArrayList(10);
 
 		}
 
@@ -45,7 +46,7 @@ namespace GameEngine.GameObjects
 		public void Draw(SpriteBatch batch)
 		{
 
-			foreach (Sprite sprite in sprites) if (sprite != null) sprite.Draw(batch);
+			foreach (Sprite sprite in sprites)if (sprite != null) sprite.Draw(batch);
 
 		}
 

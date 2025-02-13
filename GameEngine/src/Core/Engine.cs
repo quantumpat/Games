@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using GameEngine.GameObjects;
+using System.Diagnostics;
 
 namespace GameEngine.Core
 {
@@ -56,8 +57,6 @@ namespace GameEngine.Core
 
 			gameObjects = new GameObjectManager(this);
 
-			config.ApplyChanges();
-
 		}
 
 		protected void Initialize()
@@ -69,6 +68,8 @@ namespace GameEngine.Core
 
 		protected override void LoadContent()
 		{
+
+			config.ApplyChanges();
 
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 

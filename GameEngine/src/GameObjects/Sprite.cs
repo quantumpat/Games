@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Mime;
 using System.Text;
@@ -23,7 +24,7 @@ namespace GameEngine.GameObjects
 
 		private String textureName = null;
 		private Texture2D texture = null;
-		private bool visible = false;
+		private bool visible = true;
 
 
 		/*
@@ -38,6 +39,8 @@ namespace GameEngine.GameObjects
 
 			pos = new Vector2(0, 0);
 
+			Initialize();
+
 		}
 
 		public Sprite(GameObjectManager manager, String name, int x, int y)
@@ -48,6 +51,8 @@ namespace GameEngine.GameObjects
 			this.name = name;
 
 			pos = new Vector2(x, y);
+
+			Initialize();
 
 		}
 
@@ -62,6 +67,8 @@ namespace GameEngine.GameObjects
 
 			this.textureName = textureName;
 			texture = manager.Engine.Content.Load<Texture2D>(textureName);
+
+			Initialize();
 
 		}
 
@@ -81,7 +88,6 @@ namespace GameEngine.GameObjects
 		{
 
 			if (!visible || texture == null) return;
-
 			batch.Draw(texture, pos, Color.White);
 
 		}

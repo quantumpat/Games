@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,8 @@ namespace GameEngine.Core
 
 		private bool mouseVisible = true;
 
+		private bool pixelArt = true;
+
 
 		/*
 		 * Constructors
@@ -38,9 +41,6 @@ namespace GameEngine.Core
 
 			//Set basic fields
 			this.engine = engine;
-
-			//Finally apply all the changes
-			ApplyChanges();
 		
 		}
 
@@ -53,9 +53,6 @@ namespace GameEngine.Core
 			this.width = width;
 			this.height = height;
 
-			//Finally apply all the changes
-			ApplyChanges();
-
 		}
 
 		public EngineConfig(ref Engine engine, int width, int height, String title)
@@ -67,9 +64,6 @@ namespace GameEngine.Core
 			this.width = width;
 			this.height = height;
 			this.title = title;
-
-			//Finally apply all the changes
-			ApplyChanges();
 
 		}
 
@@ -87,10 +81,16 @@ namespace GameEngine.Core
 			//Make sure a game variable exists before trying to apply changes
 			if (engine == null) return;
 
+			engine.Graphics.PreferredBackBufferWidth = width;
+			engine.Graphics.PreferredBackBufferHeight = height;
+
 			//Set the fields
 			engine.IsMouseVisible = mouseVisible;
 
 			engine.Window.Title = title;
+
+			if (pixelArt) engine.GraphicsDevice.SamplerStates[0] = SamplerState.PointClamp;
+			else engine.GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
 
 		}
 
@@ -185,6 +185,16 @@ namespace GameEngine.Core
 				mouseVisible = value;
 				if (autoApplyChanges) ApplyChanges();
 
+			}
+		}
+
+		public bool IsPixelArt
+		{
+			get { return pixelArt; }
+			set
+			{
+				pixelArt = value;
+				if (autoApplyChanges) ApplyChanges();
 			}
 		}
 
