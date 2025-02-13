@@ -1,4 +1,6 @@
 ﻿using GameEngine.Core;
+using GameEngine.States;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections;
@@ -16,23 +18,23 @@ namespace GameEngine.GameObjects
 		/*
 		 * Variables
 		 */
-		private Engine engine;
+		private GameState state;
 		private ArrayList sprites;
 
 
 		/*
 		 * Constructors
 		 */
-		public GameObjectManager(Engine engine)
+		public GameObjectManager(GameState state)
 		{
 
-			this.engine = engine;
+			this.state = state;
 
 			sprites = new ArrayList(10);
 
 		}
 
-		
+
 		/*
 		 * Methods
 		 */
@@ -43,17 +45,36 @@ namespace GameEngine.GameObjects
 
 		}
 
-		public void Draw(SpriteBatch batch)
+		public void Update(GameTime gameTime)
 		{
 
-			foreach (Sprite sprite in sprites)if (sprite != null) sprite.Draw(batch);
+			foreach (Sprite sprite in sprites) if (sprite != null) sprite.Update(gameTime);
+
+		}
+
+		public void Draw(GameTime gameTime, SpriteBatch batch)
+		{
+
+			foreach (Sprite sprite in sprites) if (sprite != null) sprite.Draw(batch);
 
 		}
 
 		/*
 		 * Getters & Setters
 		 */
-		public Engine Engine { get { return engine; } }
+		public GameState State
+		{
+			get { return state; }
+			set
+			{
+				state = value;
+			}
+		}
+
+		public ArrayList Sprites
+		{
+			get { return sprites; }
+		}
 
 	}
 

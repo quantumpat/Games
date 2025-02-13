@@ -22,7 +22,6 @@ namespace GameEngine.GameObjects
 
 		private Vector2 pos;
 
-		private String textureName = null;
 		private Texture2D texture = null;
 		private bool visible = true;
 
@@ -56,7 +55,7 @@ namespace GameEngine.GameObjects
 
 		}
 
-		public Sprite(GameObjectManager manager, String name, int x, int y, String textureName)
+		public Sprite(GameObjectManager manager, String name, int x, int y, Texture2D texture)
 		{
 
 			this.manager = manager;
@@ -65,8 +64,7 @@ namespace GameEngine.GameObjects
 
 			pos = new Vector2(x, y);
 
-			this.textureName = textureName;
-			texture = manager.Engine.Content.Load<Texture2D>(textureName);
+			this.texture = texture;
 
 			Initialize();
 
@@ -83,7 +81,10 @@ namespace GameEngine.GameObjects
 
 		}
 
-		
+		public void Update(GameTime gameTime)
+		{
+		}
+
 		public void Draw(SpriteBatch batch)
 		{
 
@@ -107,12 +108,10 @@ namespace GameEngine.GameObjects
 
 		public float Y { get { return pos.Y; } set { pos.Y = value; } }
 
-		public Texture2D GetTexture() { return texture; }
-
-		public void SetTexture(String textureName)
+		public Texture2D Texture
 		{
-			this.textureName = textureName;
-			this.texture = manager.Engine.Content.Load<Texture2D>(textureName);
+			get { return texture; }
+			set { texture = value; }
 		}
 
 		public bool Visible

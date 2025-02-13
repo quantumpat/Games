@@ -12,7 +12,7 @@ public class Program
 		engine.Config.AutoApplyChanges = true;
 		engine.Run();
 
-		Sprite sprite = new Sprite(engine.GameObjects, "cosmos-bg", 0, 0, "ui-bg-cosmos");
+		//Sprite sprite = new Sprite(engine.GameObjects, "cosmos-bg", 0, 0, "ui-bg-cosmos");
 
 	}
 }

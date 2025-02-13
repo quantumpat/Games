@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using GameEngine.GameObjects;
 using System.Diagnostics;
+using GameEngine.States;
 
 namespace GameEngine.Core
 {
@@ -21,7 +22,7 @@ namespace GameEngine.Core
 		private EngineConfig config;
 		private GraphicsDeviceManager graphics;
 		private SpriteBatch spriteBatch;
-		private GameObjectManager gameObjects;
+		private GameStateManager stateManager;
 
 
 		/*
@@ -55,7 +56,7 @@ namespace GameEngine.Core
 			graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 
-			gameObjects = new GameObjectManager(this);
+			stateManager = new GameStateManager(this);
 
 		}
 
@@ -81,6 +82,9 @@ namespace GameEngine.Core
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
+			if (stateManager.CurrentState != null)
+				stateManager.CurrentState.Update(gameTime);
+
 			base.Update(gameTime);
 
 		}
@@ -91,7 +95,10 @@ namespace GameEngine.Core
 			GraphicsDevice.Clear(Color.Black);
 
 			spriteBatch.Begin();
-			gameObjects.Draw(spriteBatch);
+
+			if (stateManager.CurrentState != null)
+				stateManager.CurrentState.Draw(gameTime, spriteBatch);
+
 			spriteBatch.End();
 
 			base.Draw(gameTime);
@@ -115,7 +122,10 @@ namespace GameEngine.Core
 			get { return spriteBatch; }
 		}
 
-		public GameObjectManager GameObjects { get { return gameObjects; } }
+		public GameStateManager StateManager
+		{
+			get { return stateManager; }
+		}
 
 	}
 }
