@@ -21,8 +21,12 @@ namespace GameEngine.Core
 		 */
 		private EngineConfig config;
 		private GraphicsDeviceManager graphics;
-		private SpriteBatch spriteBatch;
 		private GameStateManager stateManager;
+		private SpriteBatch spriteBatch;
+
+		private bool isBooted = false;
+		private bool isInitialized = false;
+		private bool isLoaded = false;
 
 
 		/*
@@ -58,12 +62,16 @@ namespace GameEngine.Core
 
 			stateManager = new GameStateManager(this);
 
+			isBooted = true;
+
 		}
 
 		protected void Initialize()
 		{
 
 			base.Initialize();
+
+			isInitialized = true;
 
 		}
 
@@ -74,6 +82,8 @@ namespace GameEngine.Core
 
 			spriteBatch = new SpriteBatch(GraphicsDevice);
 
+			isLoaded = true;
+
 		}
 
 		protected override void Update(GameTime gameTime)
@@ -82,8 +92,7 @@ namespace GameEngine.Core
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
 				Exit();
 
-			if (stateManager.CurrentState != null)
-				stateManager.CurrentState.Update(gameTime);
+			stateManager.Update(gameTime);
 
 			base.Update(gameTime);
 
@@ -96,8 +105,7 @@ namespace GameEngine.Core
 
 			spriteBatch.Begin();
 
-			if (stateManager.CurrentState != null)
-				stateManager.CurrentState.Draw(gameTime, spriteBatch);
+			stateManager.Draw(gameTime, spriteBatch);
 
 			spriteBatch.End();
 

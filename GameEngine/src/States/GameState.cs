@@ -1,4 +1,5 @@
-﻿using GameEngine.GameObjects;
+﻿using GameEngine.Core;
+using GameEngine.GameObjects;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
@@ -15,6 +16,7 @@ namespace GameEngine.States
 		/*
 		 * Variables
 		 */
+		private Engine engine;
 		private String name = null;
 		private GameObjectManager gameObjects;
 
@@ -22,9 +24,10 @@ namespace GameEngine.States
 		/*
 		 * Constructors
 		 */
-		public GameState(String name)
+		public GameState(Engine engine, String name)
 		{
 
+			this.engine = engine;
 			this.name = name;
 			gameObjects = new GameObjectManager(this);
 
@@ -43,13 +46,20 @@ namespace GameEngine.States
 
 		public void Draw(GameTime gameTime, SpriteBatch batch)
 		{
+
 			gameObjects.Draw(gameTime, batch);
+
 		}
 
 
 		/*
 		 * Getters & Setters
 		 */
+		public Engine Engine
+		{
+			get { return engine; }
+		}
+
 		public String Name
 		{
 			get { return name; }

@@ -1,4 +1,6 @@
 ﻿using GameEngine.Core;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,11 +35,43 @@ namespace GameEngine.States
 
 
 		/*
+		 * Methods
+		 */
+		public void Add(GameState state)
+		{
+
+			states.Add(state);
+
+		}
+
+		public void Update(GameTime gameTime)
+		{
+
+			if (currentState != null)
+				currentState.Update(gameTime);
+
+		}
+
+		public void Draw(GameTime gameTime, SpriteBatch batch)
+		{
+
+			if (currentState != null)
+				currentState.Draw(gameTime, batch);
+
+		}
+
+
+		/*
 		 * Getters & Setters
 		 */
 		public Engine Engine
 		{
 			get { return engine; }
+		}
+
+		public ArrayList GameStates
+		{
+			get { return states; }
 		}
 
 		public GameState CurrentState
