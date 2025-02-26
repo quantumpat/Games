@@ -37,14 +37,37 @@ namespace GameEngine.States
 		/*
 		 * Methods
 		 */
-		public void Update(GameTime gameTime)
+		public void Start()
+		{
+
+			Initialize();
+
+		}
+
+		public virtual void Initialize()
+		{
+
+			Load();
+		
+		}
+
+		public virtual void Load()
+		{
+
+			Create(gameObjects);
+
+		}
+
+		public virtual void Create(GameObjectManager gameObjects){}
+
+		public virtual void Update(GameTime gameTime)
 		{
 
 			gameObjects.Update(gameTime);
 
 		}
 
-		public void Draw(GameTime gameTime, SpriteBatch batch)
+		public virtual void Draw(GameTime gameTime, SpriteBatch batch)
 		{
 
 			gameObjects.Draw(gameTime, batch);
